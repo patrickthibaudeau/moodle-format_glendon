@@ -26,9 +26,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 
-$plugin->version   = 2018072400;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2018072401;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2017051500;        // Requires this Moodle version.
-$plugin->release = '2.5.0 Build(2018072400)';
+$plugin->release = '2.5.1 Build(2018072401)';
 $plugin->component = 'format_glendon';    // Full name of the plugin (used for diagnostics).
 $plugin->dependencies = [
     'atto_etitle' => 2017072500

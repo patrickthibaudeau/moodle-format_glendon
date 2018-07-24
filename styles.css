@@ -183,6 +183,7 @@ Tabs
 
 /*Push everthing down to better see Your progress div*/
 .path-course-view .completionprogress {
+    display: contents;
     margin-top: -15px;
     margin-bottom: 10px;
 }
