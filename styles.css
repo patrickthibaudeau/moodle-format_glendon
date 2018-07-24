@@ -186,3 +186,16 @@ Tabs
     margin-top: -15px;
     margin-bottom: 10px;
 }
+
+#format-glendon-content-right .tab-content > .tab-pane {
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #ccc;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #ccc;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #ccc;
+    padding-bottom: 10px;
+}

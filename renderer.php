@@ -396,7 +396,9 @@ class format_glendon_renderer extends format_section_renderer_base {
         //Print all other sections
         for ($i = 0; $i < $numberOfRows; $i++) {
 //            echo $this->print_section_row_start();
+            echo '<div id="glendon-format-course-page-content">';
             echo $this->print_section_columns($numberOfSections, $numberOfColumns, $i, $course, $printableSections);
+            echo '</div>';
 //            echo $this->print_section_row_end();
         }
 
@@ -474,8 +476,6 @@ class format_glendon_renderer extends format_section_renderer_base {
         $modinfo = get_fast_modinfo($course);
         $html = '';
 
-        $columnClass = 'col-md-' . $bootstrapColumnNumber;
-
         //Get section number according to row start;
         $thisSection = $rowStartSectionNumber;
         $html .= html_writer::start_tag('div', array('class' => 'card-deck', 'style' => 'margin-top: 15px;'));
@@ -546,14 +546,12 @@ class format_glendon_renderer extends format_section_renderer_base {
 
         $modinfo = get_fast_modinfo($course);
 
-        $sectionInfo = $modinfo->get_section_info(0);
+        $sectionInfo = $modinfo->get_section_info(0, MUST_EXIST);
         $summary = $this->format_summary_text($sectionInfo);
         $modList = $this->courserenderer->course_section_cm_list($course, $sectionInfo, 0);
         $sectionName = get_section_name($course, $sectionInfo);
         $collapsed = $course->collapsed;
 
-        $columnClass = 'col-md-12';
-        $btnClass = 'btn btn-lg btn-success';
         $collapse = $this->print_bootstrap_collapse($sectionName, $summary, $modList, $collapsed);
 
         //Only need one column
