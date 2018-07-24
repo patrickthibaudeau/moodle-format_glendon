@@ -180,3 +180,9 @@ Tabs
 .btn-link:hover {
     text-decoration: none !important;
 }
+
+/*Push everthing down to better see Your progress div*/
+.path-course-view .completionprogress {
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
