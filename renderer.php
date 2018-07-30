@@ -368,7 +368,7 @@ class format_glendon_renderer extends format_section_renderer_base {
             $url = file_encode_url("$CFG->wwwroot/pluginfile.php", '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
                     $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
             if ($isimage) {
-                $image = '<img class="img-fluid" style="height: 160px; width: 100%; object-fit: cover" src="' . $url . '" alt="Image ' . $course->fullname . '">';
+                $image = '<img class="img-fluid" style="height: 160px; width: 100%; object-position: 50% 50%; object-fit: cover" src="' . $url . '" alt="Image ' . $course->fullname . '">';
                 break;
             }
         }
@@ -486,7 +486,7 @@ class format_glendon_renderer extends format_section_renderer_base {
                     $summary = $this->format_summary_text($sectionInfo);
                     preg_match('/<img(.*)src(.*)=(.*)"(.*)"/U', $summary, $result);
                     if (isset($result[0])) {
-                        $image = $result[0] . ' class="card-image-top"  style="height: 160px; width: 100%; object-fit: cover" alt="Image"/>';
+                        $image = $result[0] . ' class="card-image-top"  style="height: 160px; width: 100%; object-position: center; object-fit: cover" alt="Image"/>';
                     } else {
                         $image = '';
                     }
