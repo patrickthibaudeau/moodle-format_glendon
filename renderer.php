@@ -745,7 +745,7 @@ class format_glendon_renderer extends format_section_renderer_base {
             }
             $html .= '    <div role="tabpanel" class="tab-pane ' . $class . '" id="tab' . $i . '">';
             $html .= '      <div class="container-fluid">';
-            $html .= '          <div class="col-md-12" style="margin-top: 10px;">';
+            $html .= '          <div class="col-md-12 format-glendon-container" style="margin-top: 10px;">';
             $html .= '              <div class="section img-text">';
 
 
