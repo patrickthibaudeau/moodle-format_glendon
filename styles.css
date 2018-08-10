@@ -204,3 +204,10 @@ Tabs
 .format-glendon-container {
     padding-top: 15px;
 }
+
+/******
+Remove Progress help
+******/
+#completionprogressid {
+    display: none;
+}
