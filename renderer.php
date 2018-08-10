@@ -192,7 +192,7 @@ class format_glendon_renderer extends format_section_renderer_base {
         // Copy activity clipboard..
         echo $this->course_activity_clipboard($course, $displaysection);
         // Start single-section div
-        echo html_writer::start_tag('div', array('class' => 'single-section'));
+        echo html_writer::start_tag('div', array('class' => 'single-section format-glendon-single-section'));
 
         // The requested section page.
         $thissection = $modinfo->get_section_info($displaysection);
@@ -368,7 +368,7 @@ class format_glendon_renderer extends format_section_renderer_base {
             $url = file_encode_url("$CFG->wwwroot/pluginfile.php", '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
                     $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
             if ($isimage) {
-                $image = '<img class="img-fluid" src="' . $url . '" alt="Image ' . $course->fullname . '">';
+                $image = '<img class="img-fluid" style="height: 160px; width: 100%; object-position: 50% 50%; object-fit: cover" src="' . $url . '" alt="Image ' . $course->fullname . '">';
                 break;
             }
         }
@@ -396,7 +396,9 @@ class format_glendon_renderer extends format_section_renderer_base {
         //Print all other sections
         for ($i = 0; $i < $numberOfRows; $i++) {
 //            echo $this->print_section_row_start();
+            echo '<div id="glendon-format-course-page-content">';
             echo $this->print_section_columns($numberOfSections, $numberOfColumns, $i, $course, $printableSections);
+            echo '</div>';
 //            echo $this->print_section_row_end();
         }
 
@@ -474,8 +476,6 @@ class format_glendon_renderer extends format_section_renderer_base {
         $modinfo = get_fast_modinfo($course);
         $html = '';
 
-        $columnClass = 'col-md-' . $bootstrapColumnNumber;
-
         //Get section number according to row start;
         $thisSection = $rowStartSectionNumber;
         $html .= html_writer::start_tag('div', array('class' => 'card-deck', 'style' => 'margin-top: 15px;'));
@@ -486,7 +486,7 @@ class format_glendon_renderer extends format_section_renderer_base {
                     $summary = $this->format_summary_text($sectionInfo);
                     preg_match('/<img(.*)src(.*)=(.*)"(.*)"/U', $summary, $result);
                     if (isset($result[0])) {
-                        $image = $result[0] . ' class="card-image-top"  style="height: 160px; width: 100%; object-fit: cover" alt="Image"/>';
+                        $image = $result[0] . ' class="card-image-top"  style="height: 160px; width: 100%; object-position: center; object-fit: cover" alt="Image"/>';
                     } else {
                         $image = '';
                     }
@@ -546,14 +546,12 @@ class format_glendon_renderer extends format_section_renderer_base {
 
         $modinfo = get_fast_modinfo($course);
 
-        $sectionInfo = $modinfo->get_section_info(0);
+        $sectionInfo = $modinfo->get_section_info(0, MUST_EXIST);
         $summary = $this->format_summary_text($sectionInfo);
         $modList = $this->courserenderer->course_section_cm_list($course, $sectionInfo, 0);
         $sectionName = get_section_name($course, $sectionInfo);
         $collapsed = $course->collapsed;
 
-        $columnClass = 'col-md-12';
-        $btnClass = 'btn btn-lg btn-success';
         $collapse = $this->print_bootstrap_collapse($sectionName, $summary, $modList, $collapsed);
 
         //Only need one column
@@ -580,7 +578,7 @@ class format_glendon_renderer extends format_section_renderer_base {
 
         $html = '<div id="accordion" role="tablist" aria-multiselectable="true">';
         $html .= '  <div class="card">';
-        $html .= '    <div class="card-header  bg-green" id="headingOne">';
+        $html .= '    <div class="card-header section-zero-header" id="headingOne">';
         $html .= '      <h5 class="mb-0">';
         $html .= '          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">';
         $html .= '          ' . $sectionName;
@@ -747,7 +745,7 @@ class format_glendon_renderer extends format_section_renderer_base {
             }
             $html .= '    <div role="tabpanel" class="tab-pane ' . $class . '" id="tab' . $i . '">';
             $html .= '      <div class="container-fluid">';
-            $html .= '          <div class="col-md-12" style="margin-top: 10px;">';
+            $html .= '          <div class="col-md-12 format-glendon-container" style="margin-top: 10px;">';
             $html .= '              <div class="section img-text">';
 
 

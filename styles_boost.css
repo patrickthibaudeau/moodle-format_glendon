@@ -8,8 +8,8 @@
  */
 
 @media screen and (min-width: 544px) {
-    .card-deck {
-        /*display: flex !important;*/
+    #glendon-format-course-page-content .card-deck .card{
+        display: flex !important;
         flex: 1 0 0% !important;
         flex-direction: column !important;
         /*margin-right: 15px !important;*/
