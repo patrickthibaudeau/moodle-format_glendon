@@ -1,6 +1,10 @@
 # Glendon Course Format
 ## Description
 The Glendon course format visually enhances your Moodle course by breaking sections into a grid format. Adding an image and text within the section description will format the grid with the image and the text. When you click into the section, your course content will be displayed in a tabbed layout, making it easy and clear for your students to navigate your course. This also standardizes the look and feel for your courses.
+
+
+> ***Note that this course format only works with themes based on Boost***
+
 ## Installation
 The Glendon course format is dependent on the atto_etitle plugin that must be installed before installing the course format.  To install, unzip the glendon.zip file into the course/format/ folder.
 ## Using Glendon course format
