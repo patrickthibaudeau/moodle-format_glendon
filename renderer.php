@@ -474,16 +474,21 @@ class format_glendon_renderer extends format_section_renderer_base {
         $rowStartSectionNumber = ($rowNumber * $numberOfColumns) + 1;
         $bootstrapColumnNumber = 12 / $numberOfColumns;
         $modinfo = get_fast_modinfo($course);
+        
         $html = '';
-
+//        print_object($printableSections);
         //Get section number according to row start;
         $thisSection = $rowStartSectionNumber;
+        
         $html .= html_writer::start_tag('div', array('class' => 'card-deck', 'style' => 'margin-top: 15px;'));
         for ($i = 1; $i <= $numberOfColumns; $i++) {
 
             if (isset($printableSections[$thisSection])) {
                 if ($sectionInfo = $modinfo->get_section_info($printableSections[$thisSection])) {
                     $summary = $this->format_summary_text($sectionInfo);
+                    //This is required to get the actual section id number for the url
+                    $sectionInfoArray = convert_to_array($sectionInfo);    
+                    //Get image for top of card
                     preg_match('/<img(.*)src(.*)=(.*)"(.*)"/U', $summary, $result);
                     if (isset($result[0])) {
                         $image = $result[0] . ' class="card-image-top"  style="height: 160px; width: 100%; object-position: center; object-fit: cover" alt="Image"/>';
@@ -492,14 +497,14 @@ class format_glendon_renderer extends format_section_renderer_base {
                     }
                     $html .= '<div class="card">';
                     if (isset($result[0])) {
-                        $html .= '          <a href="' . $CFG->wwwroot . '/course/view.php?id=' . $course->id . '&section=' . $thisSection . '"'
+                        $html .= '          <a href="' . $CFG->wwwroot . '/course/view.php?id=' . $course->id . '&section=' . $sectionInfoArray['section'] . '"'
                                 . '  title="' . get_section_name($course, $sectionInfo) . '">';
                         $html .= $image;
                         $html .= '</a>';
                     }
                     $html .= '  <div class="card-body">';
                     $html .= '      <h5 class="card-title">';
-                    $html .= '          <a href="' . $CFG->wwwroot . '/course/view.php?id=' . $course->id . '&section=' . $thisSection . '"'
+                    $html .= '          <a href="' . $CFG->wwwroot . '/course/view.php?id=' . $course->id . '&section=' . $sectionInfoArray['section'] . '"'
                             . '  title="' . get_section_name($course, $sectionInfo) . '">'
                             . get_section_name($course, $sectionInfo) . '</a>';
                     $html .= '      </h5>';
