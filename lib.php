@@ -475,7 +475,7 @@ function format_glendon_pluginfile($course, $cm, $context, $filearea, $args, $fo
         return false;
     }
 
-    require_login();
+    require_login($course, true, $cm);
 
     if ($filearea != 'cover_image') {
         return false;
