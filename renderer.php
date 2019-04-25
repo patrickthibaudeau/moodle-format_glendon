@@ -378,9 +378,7 @@ class format_glendon_renderer extends format_section_renderer_base {
             echo html_writer::end_tag('div');
         }
         //***************** Print section 0 also known as start here ************
-//        echo $this->print_section_row_start();
         echo $this->print_start_here($course);
-//        echo $this->print_section_row_end();
         //********************* Print out course sections ***********************
         //Get printable sections
         $printableSections = $this->get_printable_sections($course);
@@ -395,11 +393,9 @@ class format_glendon_renderer extends format_section_renderer_base {
 
         //Print all other sections
         for ($i = 0; $i < $numberOfRows; $i++) {
-//            echo $this->print_section_row_start();
             echo '<div id="glendon-format-course-page-content">';
             echo $this->print_section_columns($numberOfSections, $numberOfColumns, $i, $course, $printableSections);
             echo '</div>';
-//            echo $this->print_section_row_end();
         }
 
         echo $this->end_section_div();
@@ -739,7 +735,7 @@ class format_glendon_renderer extends format_section_renderer_base {
         }
 
         $html = ' <!-- Tab panes --> ';
-        $html .= '  <div class="tab-content"> ';
+        $html .= '  <div class="tab-content mb-3"> ';
         $i = 0;
         $z = 1;
         foreach ($labels as $l) {
@@ -801,7 +797,7 @@ class format_glendon_renderer extends format_section_renderer_base {
 //        $html .= '   <div class="header format_glendon_menu_header">' . "\n";
 //        $html .= '       <div id="course-menu-title"><h3>' . get_string('main_menu', 'format_glendon') . '</h3></div> ' . "\n";
 //        $html .= '   </div>' . "\n";
-        $html .= '   <div class="content">' . "\n";
+        $html .= '   <div class="content format-glendon">' . "\n";
         $html .= '      <ul class="list-group">' . "\n";
         $html .= '      <li class="list-group-item"><a href="' . $CFG->wwwroot . '/course/view.php?id=' . $course->id . '" ><i class="fa fa-home"></i> ' . get_string('return', 'format_glendon') . '</a></li>' . "\n";
         foreach ($sections as $key => $thisSection) {

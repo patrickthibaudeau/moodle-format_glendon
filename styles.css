@@ -152,11 +152,11 @@
     background-color: #00688D !important;
 }
 
-.list-group-item.active {
+.format-glendon .list-group-item.active {
     background-color: #004b8d !important;
 }
 
-.list-group-item.active a {
+.format-glendon .list-group-item.active a {
     color: #fff !important;
 }
 
@@ -168,16 +168,16 @@ Tabs
     margin-top: -11px;
 }
 
-.btn-link {
+.format-glendon .btn-link {
     font-size: 1.3rem !important;
 }
 
-.btn-link:focus {
+.format-glendon .btn-link:focus {
     color: #fff !important;
 
 }
 
-.btn-link:hover {
+.format-glendon .btn-link:hover {
     text-decoration: none !important;
 }
 
@@ -203,11 +203,4 @@ Tabs
 
 .format-glendon-container {
     padding-top: 15px;
-}
-
-/******
-Remove Progress help
-******/
-#completionprogressid {
-    display: none;
 }
