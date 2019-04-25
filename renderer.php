@@ -361,8 +361,7 @@ class format_glendon_renderer extends format_section_renderer_base {
         //*********************Print image if there is one **********************
         $out = array();
         $context = context_course::instance($course->id);
-        require_once($CFG->libdir . '/coursecatlib.php');
-        $course = new course_in_list($course);
+        $course = new core_course_list_element($course);
         foreach ($course->get_course_overviewfiles() as $file) {
             $isimage = $file->is_valid_image();
             $url = file_encode_url("$CFG->wwwroot/pluginfile.php", '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
@@ -386,8 +385,9 @@ class format_glendon_renderer extends format_section_renderer_base {
         //Get printable sections
         $printableSections = $this->get_printable_sections($course);
         //Make array start at 1
-        $printableSections = array_combine(range(1, count($printableSections)), array_values($printableSections));
-//        $numberOfSections = $course->numsections;
+        if (count($printableSections) > 0) {
+            $printableSections = array_combine(range(1, count($printableSections)), array_values($printableSections));
+        }
         $numberOfSections = count($printableSections);
         $numberOfColumns = $course->numcolumns;
         $numberOfRows = ceil($numberOfSections / $numberOfColumns);
@@ -474,12 +474,12 @@ class format_glendon_renderer extends format_section_renderer_base {
         $rowStartSectionNumber = ($rowNumber * $numberOfColumns) + 1;
         $bootstrapColumnNumber = 12 / $numberOfColumns;
         $modinfo = get_fast_modinfo($course);
-        
+
         $html = '';
 //        print_object($printableSections);
         //Get section number according to row start;
         $thisSection = $rowStartSectionNumber;
-        
+
         $html .= html_writer::start_tag('div', array('class' => 'card-deck', 'style' => 'margin-top: 15px;'));
         for ($i = 1; $i <= $numberOfColumns; $i++) {
 
@@ -487,7 +487,7 @@ class format_glendon_renderer extends format_section_renderer_base {
                 if ($sectionInfo = $modinfo->get_section_info($printableSections[$thisSection])) {
                     $summary = $this->format_summary_text($sectionInfo);
                     //This is required to get the actual section id number for the url
-                    $sectionInfoArray = convert_to_array($sectionInfo);    
+                    $sectionInfoArray = convert_to_array($sectionInfo);
                     //Get image for top of card
                     preg_match('/<img(.*)src(.*)=(.*)"(.*)"/U', $summary, $result);
                     if (isset($result[0])) {
