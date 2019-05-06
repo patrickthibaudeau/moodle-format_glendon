@@ -204,3 +204,7 @@ Tabs
 .format-glendon-container {
     padding-top: 15px;
 }
+
+#completionprogressid {
+    float: inherit !important;
+}
