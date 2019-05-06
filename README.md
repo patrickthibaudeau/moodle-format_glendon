@@ -1,4 +1,7 @@
 # Glendon Course Format
+
+# NO MORE SUPPORT FOR VERSIONS BELOW MOODLE 3.7. 
+Because this plugin requires a theme based on boost and will not work with themes based on bootstrapbase, and that Moodle 3.7 will not have support for themes based on bootstrapbase, I will only maintain a version of this plugin for Moodle 3.7+ moving forward. This also means that I have deleted the branches for earlier versions of the plugin.
 ## Description
 The Glendon course format visually enhances your Moodle course by breaking sections into a grid format. Adding an image and text within the section description will format the grid with the image and the text. When you click into the section, your course content will be displayed in a tabbed layout, making it easy and clear for your students to navigate your course. This also standardizes the look and feel for your courses.
 
