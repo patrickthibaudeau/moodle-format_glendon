@@ -18,10 +18,35 @@
     }
 }
 
-.btn-link, .btn-link:focus {
-    color: #fff !important;
+.btn-outline-glendon-format {
+  color: #fff;
+  border-color: #fff !important;
+  background-color: transparent;
 }
 
-.card-body {
-    padding: 10px !important;
+.btn-outline-glendon-format:hover {
+  color: #fff;
+  background-color: #004b8d;
+  border-color: #004b8d;
+}
+
+.btn-outline-glendon-format:focus, .btn-outline-glendon-format.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-outline-glendon-format.disabled, .btn-outline-glendon-format:disabled {
+  color: #004b8d;
+  background-color: transparent;
+}
+
+.btn-outline-glendon-format:not(:disabled):not(.disabled):active, .btn-outline-glendon-format:not(:disabled):not(.disabled).active,
+.show > .btn-outline-glendon-format.dropdown-toggle {
+  color: #fff;
+  background-color: #004b8d;
+  border-color: #004b8d;
+}
+
+.btn-outline-glendon-format:not(:disabled):not(.disabled):active:focus, .btn-outline-glendon-format:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-glendon-format.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }

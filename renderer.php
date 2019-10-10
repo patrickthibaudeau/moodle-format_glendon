@@ -581,7 +581,7 @@ class format_glendon_renderer extends format_section_renderer_base {
         $html .= '  <div class="card">';
         $html .= '    <div class="card-header section-zero-header" id="headingOne">';
         $html .= '      <h5 class="mb-0">';
-        $html .= '          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">';
+        $html .= '          <button class="btn btn-outline-glendon-format" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">';
         $html .= '          ' . $sectionName;
         $html .= '        </button>';
         $html .= '      </h5>';

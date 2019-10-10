@@ -168,19 +168,6 @@ Tabs
     margin-top: -11px;
 }
 
-.format-glendon .btn-link {
-    font-size: 1.3rem !important;
-}
-
-.format-glendon .btn-link:focus {
-    color: #fff !important;
-
-}
-
-.format-glendon .btn-link:hover {
-    text-decoration: none !important;
-}
-
 /*Push everthing down to better see Your progress div*/
 .path-course-view .completionprogress {
     display: contents;
