@@ -121,18 +121,9 @@
     list-style-type: none;
 }
 
-.course-page-img {
-    width: 100%;
-    max-height: 185px !important;
-}
 
-/*Best image resolution 555px x 185px*/
-.course-page-img {
-    background-color: #333;
-    max-height:185px !important;
-}
 
-.topic-text {
+.format-glendon-topic-text {
     width: 100%;
     background-color: #004b8d;
     color:#fff;
@@ -143,12 +134,12 @@
     text-align: center;
 }
 
-.topic-text  a {
+.format-glendon-topic-text  a {
     color: #fff !important;
     font-size: 0.9em !important;
 }
 
-#headingOne.section-zero-header {
+#format-glendon-heading-one.section-zero-header {
     background-color: #00688D !important;
 }
 

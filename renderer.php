@@ -199,7 +199,7 @@ class format_glendon_renderer extends format_section_renderer_base {
 
         // Title 
         $sectiontitle = '';
-        $sectiontitle .= html_writer::start_tag('div', array('class' => 'topic-text'));
+        $sectiontitle .= html_writer::start_tag('div', array('class' => 'format-glendon-topic-text'));
         // Title attributes
         $classes = 'sectionname';
         if (!$thissection->visible) {
@@ -579,14 +579,14 @@ class format_glendon_renderer extends format_section_renderer_base {
 
         $html = '<div id="accordion" role="tablist" aria-multiselectable="true">';
         $html .= '  <div class="card">';
-        $html .= '    <div class="card-header section-zero-header" id="headingOne">';
+        $html .= '    <div class="card-header section-zero-header" id="format-glendon-heading-one">';
         $html .= '      <h5 class="mb-0">';
         $html .= '          <button class="btn btn-outline-glendon-format" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">';
         $html .= '          ' . $sectionName;
         $html .= '        </button>';
         $html .= '      </h5>';
         $html .= '    </div>';
-        $html .= '    <div id="collapseOne" class="collapse ' . $in . '" data-parent="#accordion" aria-labelledby="headingOne">';
+        $html .= '    <div id="collapseOne" class="collapse ' . $in . '" data-parent="#accordion" aria-labelledby="format-glendon-heading-one">';
         $html .= '      <div class="card-block">';
         if (!empty($summary)) {
             $html .= '        <div class="well well-lg">';

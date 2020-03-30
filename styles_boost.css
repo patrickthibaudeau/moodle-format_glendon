@@ -19,13 +19,13 @@
 }
 
 .btn-outline-glendon-format {
-  color: #fff;
+  color: #fff !important;
   border-color: #fff !important;
   background-color: transparent;
 }
 
 .btn-outline-glendon-format:hover {
-  color: #fff;
+  color: #fff !important;
   background-color: #004b8d;
   border-color: #004b8d;
 }
