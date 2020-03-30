@@ -48,6 +48,7 @@ $string['pluginname'] = 'Glendon format';
 $string['section0name'] = 'Start';
 $string['page-course-view-glendon'] = 'Any course main page in glendon format';
 $string['page-course-view-glendon-x'] = 'Any course page in glendon format';
+$string['privacy:metadata'] = 'The Glendon Course Format plugin does not store any personal data.';
 $string['hidefromothers'] = 'Hide topic';
 $string['showfromothers'] = 'Show topic';
 //New tags

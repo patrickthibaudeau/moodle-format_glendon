@@ -45,6 +45,7 @@ $string['start_here'] = 'Commencez ici';
 $string['tab_label'] = 'Longueur de l\'étiquette';
 $string['tab_label_help'] = 'La longueur maximale d\'une étiquette doit avoir pour faire partie des onglets d\'une seule page. Si les étiquettes sont supérieurs à ce nombre, ils ne seront pas ajoutés sous forme d\'onglet. Cependant, ils seront affichés sous l\'onglet approprié.';
 $string['pluginname'] = 'Format Glendon';
+$string['privacy:metadata'] = 'Le plugin Glendon Course Format ne stocke aucune donnée personnelle.';
 $string['section0name'] = 'Commencez ici';
 $string['page-course-view-glendon'] = 'Tous les pages pronicpale dans le format Glendon';
 $string['page-course-view-glendon-x'] = 'Tous les pages dasn le format Glendon';
