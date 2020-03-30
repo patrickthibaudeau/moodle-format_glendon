@@ -43,8 +43,7 @@ $string['return'] = 'Course home';
 $string['sectionname'] = 'Topic';
 $string['start_here'] = 'Start here';
 $string['tab_label'] = 'Tab label length';
-$string['tab_label_help'] = 'The maximum length a label must have to be part of the single page tabs. If Labels are greater than'
-        . ' this number, they will not be added as a tab. However they will be displayed under the appropriate tab.';
+$string['tab_label_help'] = 'The maximum length a label must have to be part of the single page tabs. If Labels are greater than this number, they will not be added as a tab. However they will be displayed under the appropriate tab.';
 $string['pluginname'] = 'Glendon format';
 $string['section0name'] = 'Start';
 $string['page-course-view-glendon'] = 'Any course main page in glendon format';
