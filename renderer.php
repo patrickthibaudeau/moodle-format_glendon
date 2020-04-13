@@ -26,12 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/course/format/renderer.php');
 
-/**
- * Basic renderer for glendon format.
- *
- * @copyright 2012 Dan Poltawski
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+
 class format_glendon_renderer extends format_section_renderer_base {
 
     /**

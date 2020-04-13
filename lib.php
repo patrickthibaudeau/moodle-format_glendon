@@ -26,13 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/course/format/lib.php');
 
-/**
- * Main class for the glendon course format
- *
- * @package    format_glendon
- * @copyright  2012 Marina Glancy
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+
 class format_glendon extends format_base {
 
     /**
