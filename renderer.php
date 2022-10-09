@@ -1,5 +1,7 @@
 <?php
 
+
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -26,13 +28,9 @@
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/course/format/renderer.php');
 
-/**
- * Basic renderer for glendon format.
- *
- * @copyright 2012 Dan Poltawski
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-class format_glendon_renderer extends format_section_renderer_base {
+
+class format_glendon_renderer extends format_section_renderer_base
+{
 
     /**
      * Constructor method, calls the parent constructor
@@ -40,7 +38,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * @param moodle_page $page
      * @param string $target one of rendering target constants
      */
-    public function __construct(moodle_page $page, $target) {
+    public function __construct(moodle_page $page, $target)
+    {
         global $PAGE;
         parent::__construct($page, $target);
         // Since format_glendon_renderer::section_edit_controls() only displays the 'Set current section' control when editing mode is on
@@ -52,7 +51,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * Generate the starting container html for a list of sections
      * @return string HTML to output.
      */
-    protected function start_section_list() {
+    protected function start_section_list()
+    {
         return html_writer::start_tag('ul', array('class' => 'glendon'));
     }
 
@@ -60,7 +60,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * Generate the closing container html for a list of sections
      * @return string HTML to output.
      */
-    protected function end_section_list() {
+    protected function end_section_list()
+    {
         return html_writer::end_tag('ul');
     }
 
@@ -68,7 +69,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * Generate the starting container html for a list of sections
      * @return string HTML to output.
      */
-    protected function start_section_div() {
+    protected function start_section_div()
+    {
 //        return html_writer::start_tag('div', array('class' => 'container-fluid'));
         return html_writer::start_tag('div', []);
     }
@@ -77,7 +79,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * Generate the closing container html for a list of sections
      * @return string HTML to output.
      */
-    protected function end_section_div() {
+    protected function end_section_div()
+    {
         return html_writer::end_tag('div');
     }
 
@@ -85,7 +88,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * Generate the title for this section page
      * @return string the page title
      */
-    protected function page_title() {
+    protected function page_title()
+    {
         return get_string('topicoutline');
     }
 
@@ -97,7 +101,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * @param bool $onsectionpage true if being printed on a section page
      * @return array of edit control items
      */
-    protected function section_edit_control_items($course, $section, $onsectionpage = false) {
+    protected function section_edit_control_items($course, $section, $onsectionpage = false)
+    {
         global $PAGE;
 
         if (!$PAGE->user_is_editing()) {
@@ -166,7 +171,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * @param array $modnamesused (argument not used)
      * @param int $displaysection The section number in the course which is being displayed
      */
-    public function print_glendon_single_section_page($course, $sections, $mods, $modnames, $modnamesused, $displaysection) {
+    public function print_glendon_single_section_page($course, $sections, $mods, $modnames, $modnamesused, $displaysection)
+    {
         global $CFG, $PAGE;
 
         $modinfo = get_fast_modinfo($course);
@@ -197,7 +203,7 @@ class format_glendon_renderer extends format_section_renderer_base {
         // The requested section page.
         $thissection = $modinfo->get_section_info($displaysection);
 
-        // Title 
+        // Title
         $sectiontitle = '';
         $sectiontitle .= html_writer::start_tag('div', array('class' => 'format-glendon-topic-text'));
         // Title attributes
@@ -236,7 +242,9 @@ class format_glendon_renderer extends format_section_renderer_base {
 
         //Only print tabs if there are labels
         if ($courseModules != null) {
-            echo @$this->print_bootstrap_tab_list($course, $displaysection);
+            // This method inserts an image into the tab, if an image is detected.
+            echo @$this->print_bootstrap_tab_image_list($course, $displaysection);
+//            echo @$this->print_bootstrap_tab_list($course, $displaysection);
             echo @$this->print_bootstrap_tab_divs($course, $displaysection);
         }
 
@@ -270,7 +278,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * @param int $displayoptions
      * @return void
      */
-    public function course_section_cm_list($course, $section, $sectionreturn = null, $displayoptions = array()) {
+    public function course_section_cm_list($course, $section, $sectionreturn = null, $displayoptions = array())
+    {
         global $USER;
 
         $output = '';
@@ -338,7 +347,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * @param array $modnames (argument not used)
      * @param array $modnamesused (argument not used)
      */
-    public function print_course_front_page($course, $sections, $mods, $modnames, $modnamesused) {
+    public function print_course_front_page($course, $sections, $mods, $modnames, $modnamesused)
+    {
         global $CFG, $PAGE, $DB;
 
         $modinfo = get_fast_modinfo($course);
@@ -365,7 +375,7 @@ class format_glendon_renderer extends format_section_renderer_base {
         foreach ($course->get_course_overviewfiles() as $file) {
             $isimage = $file->is_valid_image();
             $url = file_encode_url("$CFG->wwwroot/pluginfile.php", '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
-                    $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
+                $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
             if ($isimage) {
                 $image = '<img class="img-fluid" style="height: 160px; width: 100%; object-position: 50% 50%; object-fit: cover" src="' . $url . '" alt="Image ' . $course->fullname . '">';
                 break;
@@ -377,6 +387,8 @@ class format_glendon_renderer extends format_section_renderer_base {
             echo $image;
             echo html_writer::end_tag('div');
         }
+
+
         //***************** Print section 0 also known as start here ************
         echo $this->print_start_here($course);
         //********************* Print out course sections ***********************
@@ -398,17 +410,21 @@ class format_glendon_renderer extends format_section_renderer_base {
             echo '</div>';
         }
 
+
+        // This is where the code for the progress bar would go.
+
         echo $this->end_section_div();
     }
 
     /**
      * Returns an array with the sections that can be printed
-     * @global stdClass $CFG
-     * @global moodle_page $PAGE
      * @param stdClass $course
      * @return array
+     * @global stdClass $CFG
+     * @global moodle_page $PAGE
      */
-    protected function get_printable_sections($course) {
+    protected function get_printable_sections($course)
+    {
         global $CFG, $PAGE;
 
         $modinfo = get_fast_modinfo($course);
@@ -430,12 +446,13 @@ class format_glendon_renderer extends format_section_renderer_base {
 
     /**
      * Returns an array with the sections that can be printed
-     * @global stdClass $CFG
-     * @global moodle_page $PAGE
      * @param stdClass $course
      * @return array
+     * @global stdClass $CFG
+     * @global moodle_page $PAGE
      */
-    protected function redirect_highlighted_section($course) {
+    protected function redirect_highlighted_section($course)
+    {
         global $CFG, $PAGE;
 
         $modinfo = get_fast_modinfo($course);
@@ -454,17 +471,18 @@ class format_glendon_renderer extends format_section_renderer_base {
     }
 
     /**
-     * 
-     * @global stdClass $CFG
-     * @global moodle_page $PAGE
+     *
      * @param int $bootstrapVersion
      * @param int $numberOfSections
      * @param int $numberOfColumns
      * @param int $rowNumber Current row
      * @param stdClass $course
      * @return string HTML
+     * @global stdClass $CFG
+     * @global moodle_page $PAGE
      */
-    protected function print_section_columns($numberOfSections, $numberOfColumns, $rowNumber, $course, $printableSections) {
+    protected function print_section_columns($numberOfSections, $numberOfColumns, $rowNumber, $course, $printableSections)
+    {
         global $CFG, $PAGE;
 
         $rowStartSectionNumber = ($rowNumber * $numberOfColumns) + 1;
@@ -494,18 +512,17 @@ class format_glendon_renderer extends format_section_renderer_base {
                     $html .= '<div class="card">';
                     if (isset($result[0])) {
                         $html .= '          <a href="' . $CFG->wwwroot . '/course/view.php?id=' . $course->id . '&section=' . $sectionInfoArray['section'] . '"'
-                                . '  title="' . get_section_name($course, $sectionInfo) . '">';
+                            . '  title="' . get_section_name($course, $sectionInfo) . '">';
                         $html .= $image;
                         $html .= '</a>';
                     }
                     $html .= '  <div class="card-body">';
                     $html .= '      <h5 class="card-title">';
                     $html .= '          <a href="' . $CFG->wwwroot . '/course/view.php?id=' . $course->id . '&section=' . $sectionInfoArray['section'] . '"'
-                            . '  title="' . get_section_name($course, $sectionInfo) . '">'
-                            . get_section_name($course, $sectionInfo) . '</a>';
+                        . '  title="' . get_section_name($course, $sectionInfo) . '">'
+                        . get_section_name($course, $sectionInfo) . '</a>';
                     $html .= '      </h5>';
-                    $summary = preg_replace("/<img[^>]+\>/i", "", $summary);
-                    ;
+                    $summary = preg_replace("/<img[^>]+\>/i", "", $summary);;
                     $html .= '<p class="card-text">' . $summary . '</p>';
                     $html .= '  </div>';
 
@@ -517,18 +534,19 @@ class format_glendon_renderer extends format_section_renderer_base {
         $html .= html_writer::end_tag('div');
 
 
-
         return $html;
     }
 
-    protected function print_section_row_start() {
+    protected function print_section_row_start()
+    {
 
         $html = html_writer::start_tag('div', array('class' => 'row'));
 
         echo $html;
     }
 
-    protected function print_section_row_end() {
+    protected function print_section_row_end()
+    {
         $html = html_writer::end_tag('div'); //Row
 
         echo $html;
@@ -536,13 +554,14 @@ class format_glendon_renderer extends format_section_renderer_base {
 
     /**
      * returns string HTML for Section 0
-     * @global stdClass $CFG
-     * @global moodle_page $PAGE
      * @param int $bootstrapVersion
      * @param stdClass $course
      * @return type
+     * @global moodle_page $PAGE
+     * @global stdClass $CFG
      */
-    protected function print_start_here($course) {
+    protected function print_start_here($course)
+    {
         global $CFG, $PAGE;
 
         $modinfo = get_fast_modinfo($course);
@@ -570,7 +589,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * @param string $modListing
      * @return string
      */
-    protected function print_bootstrap_collapse($sectionName, $summary, $modListing, $collapsed) {
+    protected function print_bootstrap_collapse($sectionName, $summary, $modListing, $collapsed)
+    {
 
         $in = 'show in';
         if ($collapsed == 1) {
@@ -604,7 +624,8 @@ class format_glendon_renderer extends format_section_renderer_base {
         return $html;
     }
 
-    protected function get_bootstrap_button_style() {
+    protected function get_bootstrap_button_style()
+    {
         $styles = array(
             'btn-success' => 'btn-success',
             'btn-warning' => 'btn-warning',
@@ -616,15 +637,16 @@ class format_glendon_renderer extends format_section_renderer_base {
     }
 
     /**
-     * 
-     * @global stdClass $CFG
-     * @global moodle_database $DB
+     *
      * @param moodle_course $course
      * @param int $displaysection
      * @param strings $class
      * @return string
+     * @global stdClass $CFG
+     * @global moodle_database $DB
      */
-    protected function print_bootstrap_tab_list($course, $displaysection, $class = '') {
+    protected function print_bootstrap_tab_list($course, $displaysection, $class = '')
+    {
         global $CFG, $DB;
 
         //Get course modules
@@ -672,19 +694,113 @@ class format_glendon_renderer extends format_section_renderer_base {
         $html .= ' ';
 
 
-
         return $html;
     }
 
     /**
-     * 
+     * This method prints the tabs with text, an h2 label and checks for an image.
+     * If an image is detected, the image will be put inside the tab, on top of the h2 label.
+     * If just an image is required, without any text, simply leave the h2 tag empty. An h2 tag is required however.
+     * @param moodle_course $course
+     * @param int $displaysection
+     * @param strings $class
+     * @return string
+     * @global stdClass $CFG
      * @global moodle_database $DB
+     */
+    protected function print_bootstrap_tab_image_list($course, $displaysection, $class = '')
+    {
+        global $CFG, $DB;
+
+        //Get course modules
+        $modinfo = get_fast_modinfo($course->id);
+        //Get this section info
+        $sectionInfo = $modinfo->get_section_info($displaysection);
+        //Convert sectin info into an array
+        $section = convert_to_array($sectionInfo->getIterator());
+        //get all course modules for this section in the order that they appear in the section
+        $courseModules = explode(',', $section['sequence']);
+        //Get the config data for the module
+
+
+        $i = 0;
+
+
+        $label = '';
+
+        if ($courseModules[0] != null) {
+
+            foreach ($courseModules as $key => $value) {
+                $thisModule = $modinfo->cms[$value];
+                $thisModuleArray = convert_to_array($thisModule);
+
+//                print_object($thisModuleArray);
+                if ($thisModuleArray['modname'] == 'label' && !$thisModuleArray['deletioninprogress'] ) {
+                    preg_match("#<\s*?h2\b[^>]*>(.*?)</h2\b[^>]*>#s", $thisModule->get_formatted_content(), $matchesText);
+                    // Matching regex for image source
+                    preg_match('/<img(.*)src(.*)=(.*)"(.*)"/U', $matchesText[0], $matches);
+                    $labelName = strip_tags($matchesText[1]);
+                    // Fetching the URL
+                    $url = strip_tags($matches[4]);
+
+                    /********************Debugging********************/
+//                    print_r($matches);
+//                    print_r($url);
+//                    print_r($matches[0]);
+//                    $image = strip_tags($matches[1]);
+//                    print_r($matches);
+//                    die;
+//                    print_r($matches);
+
+                    //If lentgh is more than 25 Characters cut the label
+                    // Render out the tab if an h2 label OR a url is detected.
+                    if ($labelName != '' || $url!= '') {
+                        if ($i != 0) {
+                            $activeClass = 'class="nav-link ' . $class . '"';
+                        } else {
+                            $activeClass = 'class="nav-link ' . $class . ' active' . '"';
+                        }
+                        // If the URL has a value, create an image tag.
+                        if($url!= ''){
+                            $image = '<img class="img-tab" style="height: 150px; width: 150px; text-align:center; object-fit: contain"  src="' . $url . '" alt="Image">';
+                            $label .= '    <li class="nav-item" xmlns="http://www.w3.org/1999/html"><a href="#tab' . $i . '" aria-controls="tab' . $i . '" role="tab" data-toggle="tab" ' . $activeClass . '>' . $image . '</br>    ' . $labelName . '  </a></li> ';
+
+                        }
+                        // Otherwise, simply go ahead and render the label without the image.
+                        else{
+                            $label .= '    <li class="nav-item" xmlns="http://www.w3.org/1999/html"><a href="#tab' . $i . '" aria-controls="tab' . $i . '" role="tab" data-toggle="tab" ' . $activeClass . '></br>    ' . $labelName . '  </a></li> ';
+                        }
+
+
+                        $i++;
+                    }
+//
+                }
+            }
+        }
+        //Setup HTML
+        $html = '<div>';
+        $html .= ' <!-- Nav tabs --> ';
+        $html .= '  <ul class="nav nav-tabs"> ';
+        $html .= $label;
+        $html .= '  </ul> ';
+        $html .= ' ';
+
+
+        return $html;
+    }
+
+
+    /**
+     *
      * @param type $labels
      * @param type $course
      * @param type $displaysection
      * @return string
+     * @global moodle_database $DB
      */
-    protected function print_bootstrap_tab_divs($course, $displaysection) {
+    protected function print_bootstrap_tab_divs($course, $displaysection)
+    {
         global $CFG, $DB, $OUTPUT, $PAGE;
         include_once($CFG->dirroot . '/question/editlib.php');
         include_once($CFG->dirroot . '/course/renderer.php');
@@ -718,8 +834,11 @@ class format_glendon_renderer extends format_section_renderer_base {
             $thisModule = $modinfo->cms[$value];
             $thisModuleInfo = $thisModule->get_course_module_record();
             $thisModuleArray = convert_to_array($thisModule);
-            if ($thisModuleArray['modname'] == 'label') {
+            if ($thisModuleArray['modname'] == 'label' && !$thisModuleArray['deletioninprogress']) {
                 preg_match("#<\s*?h2\b[^>]*>(.*?)</h2\b[^>]*>#s", $thisModule->get_formatted_content(), $matches);
+                // Search for the img tag and scrape the src attribute.
+//                preg_match('/<img(.*)src(.*)=(.*)"(.*)"/U', $thisModule->get_formatted_content(), $matches);
+//                    print_object($matches[0]);
                 if (!isset($matches[1])) {
                     $x++;
                     $courseModulesByLabel[$i][$x] = $thisModuleInfo->id;
@@ -733,6 +852,7 @@ class format_glendon_renderer extends format_section_renderer_base {
                 $courseModulesByLabel[$i][$x] = $thisModuleInfo->id;
             }
         }
+        $sql =
 
         $html = ' <!-- Tab panes --> ';
         $html .= '  <div class="tab-content mb-3"> ';
@@ -780,14 +900,15 @@ class format_glendon_renderer extends format_section_renderer_base {
     /**
      * This function returns an array of cmids containing the top level label and all
      * modules underneath that label
-     * @global stdClass $CFG
-     * @global moodle_database $DB
-     * @global moodle_output $OUTPUT
      * @param stdClass $course
      * @param int $displaysection
      * @return array containing
+     * @global stdClass $CFG
+     * @global moodle_database $DB
+     * @global moodle_output $OUTPUT
      */
-    private function print_course_menu($course, $displaysection) {
+    private function print_course_menu($course, $displaysection)
+    {
         global $CFG, $DB, $OUTPUT;
 
         //Get course modules
@@ -809,8 +930,8 @@ class format_glendon_renderer extends format_section_renderer_base {
             }
             if ($thisSection != 0) {
                 $html .= '      <li class="list-group-item ' . $classActive . '"><a href="' . $CFG->wwwroot . '/course/view.php?id=' . $course->id . '&section=' . $thisSection . '"'
-                        . '  title="' . get_section_name($course, $sectionInfo) . '">'
-                        . get_section_name($course, $sectionInfo) . '</a></li>';
+                    . '  title="' . get_section_name($course, $sectionInfo) . '">'
+                    . get_section_name($course, $sectionInfo) . '</a></li>';
             }
         }
 
@@ -831,7 +952,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * @param int $sectionreturn The section to return to after an action
      * @return string HTML to output.
      */
-    protected function section_header($section, $course, $onsectionpage, $sectionreturn = null) {
+    protected function section_header($section, $course, $onsectionpage, $sectionreturn = null)
+    {
         global $PAGE;
 
         $o = '';
@@ -848,8 +970,8 @@ class format_glendon_renderer extends format_section_renderer_base {
         }
 
         $o .= html_writer::start_tag('li', array('id' => 'section-' . $section->section,
-                    'class' => 'section main clearfix' . $sectionstyle, 'role' => 'region',
-                    'aria-label' => get_section_name($course, $section)));
+            'class' => 'section main clearfix' . $sectionstyle, 'role' => 'region',
+            'aria-label' => get_section_name($course, $section)));
 
         // Create a span that contains the section title to be used to create the keyboard section move menu.
         $o .= html_writer::tag('span', $this->section_title($section, $course), array('class' => 'hidden sectionname'));
@@ -886,7 +1008,8 @@ class format_glendon_renderer extends format_section_renderer_base {
      * @param stdClass $section The course_section entry from DB
      * @return string HTML to output.
      */
-    protected function format_summary_text($section) {
+    protected function format_summary_text($section)
+    {
         $context = context_course::instance($section->course);
         $summarytext = file_rewrite_pluginfile_urls($section->summary, 'pluginfile.php', $context->id, 'course', 'section', $section->id);
 
