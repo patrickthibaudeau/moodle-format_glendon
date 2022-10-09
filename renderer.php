@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/course/format/renderer.php');
 
 
-class format_glendon_renderer extends format_section_renderer_base
+class format_glendon_renderer extends core_courseformat\output\section_renderer
 {
 
     /**
@@ -195,8 +195,8 @@ class format_glendon_renderer extends format_section_renderer_base
             return;
         }
 
-        // Copy activity clipboard..
-        echo $this->course_activity_clipboard($course, $displaysection);
+        // Copy activity clipboard.. NO LONGER USED
+//        echo $this->course_activity_clipboard($course, $displaysection);
         // Start single-section div
         echo html_writer::start_tag('div', array('class' => 'single-section format-glendon-single-section'));
 
@@ -258,7 +258,7 @@ class format_glendon_renderer extends format_section_renderer_base
         echo $this->section_header($thissection, $course, true, $displaysection);
         // Show completion help icon.
         $completioninfo = new completion_info($course);
-        echo $completioninfo->display_help_icon();
+//        echo $completioninfo->display_help_icon();
         echo $this->section_footer();
         echo $this->end_section_list();
 
@@ -359,11 +359,12 @@ class format_glendon_renderer extends format_section_renderer_base
 
         // Title with completion help icon.
         $completioninfo = new completion_info($course);
-        echo $completioninfo->display_help_icon();
+        // HELP ICON NO LONGER USED
+//        echo $completioninfo->display_help_icon();
         echo $this->output->heading($this->page_title(), 2, 'accesshide');
 
-        // Copy activity clipboard..
-        echo $this->course_activity_clipboard($course, 0);
+        // Copy activity clipboard.. NO LONGER USED
+//        echo $this->course_activity_clipboard($course, 0);
 
         // Now the list of sections..
         echo $this->start_section_div();
